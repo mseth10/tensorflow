@@ -1,0 +1,11 @@
+name: Workflow that will run when the repo changes
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+    - name: Execute a bash command
+      run: echo "Hello World!"
