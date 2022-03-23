@@ -1,6 +1,13 @@
-name: Workflow that will run when the repo changes
+name: Workflow that will run for minor releases and release candidates, for pull requests and also on a nightly basis.
 
-on: [push]
+on:
+  push:
+    tags:
+      - v2.*
+  pull_request:
+    types: [opened, synchronize, reopened]
+  schedule:
+    - cron: "30 8 * * *"
 
 jobs:
   build:
@@ -8,4 +15,11 @@ jobs:
 
     steps:
     - name: Execute a bash command
-      run: echo "Hello World!"
+      run: echo "Run Build Script Here!"
+
+  test:
+    runs-on: self-hosted
+
+    steps:
+    - name: Execute a bash command
+      run: echo "Run Test Scripts Here!"
