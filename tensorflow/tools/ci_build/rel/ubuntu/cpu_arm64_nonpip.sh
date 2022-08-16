@@ -75,8 +75,9 @@ bazel test ${TF_TEST_FLAGS} \
     --build_tag_filters=${TF_FILTER_TAGS} \
     --test_tag_filters=${TF_FILTER_TAGS} \
     --local_test_jobs=64 \
-    --verbose_failures=true \
-    --test_keep_going \
+    --verbose_failures \
+    --test_output=errors \
+    --build_tests_only \
     -k \
     -- ${TF_TEST_TARGETS}
 

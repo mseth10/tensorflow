@@ -44,6 +44,7 @@ jobs:
             docker stop $running_containers;
           fi
           docker container prune -f
+          docker image prune -af
       - name: Clean repository
         shell: bash
         run: find /home/ubuntu/actions-runner/_work/tensorflow/tensorflow/. -name . -o -prune -exec sudo rm -rf -- {} + || true
